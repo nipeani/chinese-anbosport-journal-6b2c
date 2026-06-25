@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>安博体育 · 杂志专题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #ffedd5 0%, #fce4c8 45%, #f3d5b5 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1.2rem;
+      line-height: 1.6;
+      color: #2a241d;
+    }
+    .magazine {
+      max-width: 900px;
+      width: 100%;
+      background: rgba(255, 250, 240, 0.9);
+      backdrop-filter: blur(2px);
+      border-radius: 2.8rem;
+      box-shadow: 0 20px 40px -15px rgba(120, 80, 40, 0.3);
+      padding: 3rem 2.2rem 2.8rem;
+      transition: all 0.2s ease;
+    }
+    /* 横幅 hero 区 */
+    .hero-banner {
+      background: linear-gradient(135deg, #d9a87e, #b87f5a);
+      border-radius: 2.4rem;
+      padding: 2.6rem 2rem;
+      margin-bottom: 2.8rem;
+      text-align: center;
+      box-shadow: inset 0 2px 8px rgba(255, 230, 190, 0.5), 0 12px 18px -8px #9a7b5e40;
+    }
+    .hero-banner h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #fdf5e8;
+      text-shadow: 0 2px 6px #5f3f28;
+      margin-bottom: 0.4rem;
+    }
+    .hero-banner .sub {
+      font-size: 1.1rem;
+      color: #f7ebdb;
+      background: rgba(65, 40, 22, 0.25);
+      display: inline-block;
+      padding: 0.2rem 1.4rem;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+    }
+    /* 背景说明卡片 */
+    .context-card {
+      background: #ffffffd6;
+      backdrop-filter: blur(4px);
+      border-radius: 2rem;
+      padding: 1.8rem 1.8rem 1.6rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 8px 12px -6px #b2977c30;
+      border: 1px solid #f3dec9;
+    }
+    .context-card h2 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #7a5b3f;
+      border-left: 6px solid #c99264;
+      padding-left: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .context-card p {
+      color: #3d2f22;
+      margin-bottom: 0.6rem;
+    }
+    /* 三段自然介绍 */
+    .feature-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin: 1.8rem 0 1.6rem;
+    }
+    .feature-item {
+      background: #fffcf5;
+      border-radius: 1.8rem;
+      padding: 1.4rem 1.8rem;
+      transition: box-shadow 0.15s;
+      box-shadow: 0 4px 10px -4px #ccb39750;
+      border-left: 10px solid #dbb194;
+    }
+    .feature-item h3 {
+      font-size: 1.1rem;
+      font-weight: 550;
+      color: #5e3f2b;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .feature-item h3::before {
+      content: "✦";
+      color: #b98259;
+      font-size: 1.2rem;
+    }
+    .feature-item p {
+      color: #3b312a;
+    }
+    /* 链接按钮感 */
+    .link-area {
+      background: #f8efe4;
+      border-radius: 2rem;
+      padding: 1.3rem 1.8rem;
+      margin: 2rem 0 1.5rem;
+      text-align: center;
+      border: 1px solid #e5cfb8;
+    }
+    .link-area a {
+      display: inline-block;
+      background: #b77f58;
+      color: #fef6ea;
+      text-decoration: none;
+      padding: 0.6rem 2.8rem;
+      border-radius: 60px;
+      font-weight: 550;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      box-shadow: 0 6px 0 #7a5b40, 0 8px 16px -6px #7b5c3e;
+      transition: 0.12s;
+      margin: 0.2rem 0;
+    }
+    .link-area a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 0 #7a5b40, 0 12px 20px -8px #5e412a;
+      background: #c58b64;
+    }
+    .link-area a:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #7a5b40;
+    }
+    .link-area .hint {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #7b6552;
+    }
+    /* 页尾提示 */
+    .footer-note {
+      border-top: 2px dashed #d9c1ab;
+      padding-top: 1.4rem;
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #5f4c38;
+    }
+    .footer-note span {
+      background: #eee3d6;
+      padding: 0.1rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      display: inline-block;
+    }
+    /* 小 FAQ 摘要 */
+    .faq-mini {
+      background: #fcf3e9;
+      border-radius: 1.4rem;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.8rem;
+      border: 1px solid #ebd9c6;
+    }
+    .faq-mini details {
+      margin-bottom: 0.2rem;
+    }
+    .faq-mini summary {
+      font-weight: 520;
+      cursor: pointer;
+      color: #6f513b;
+    }
+    .faq-mini p {
+      padding-left: 1rem;
+      color: #4b3a2d;
+      font-size: 0.96rem;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+      .magazine {
+        padding: 1.8rem 1rem;
+        border-radius: 2rem;
+      }
+      .hero-banner h1 {
+        font-size: 1.9rem;
+      }
+      .feature-item {
+        padding: 1rem 1rem;
+      }
+      .link-area a {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="magazine">
+
+  <!-- 杂志横幅 -->
+  <div class="hero-banner">
+    <h1>安博体育</h1>
+    <div class="sub">日常的入口 · 稳定的节奏</div>
+  </div>
+
+  <!-- 背景说明 -->
+  <div class="context-card">
+    <h2>从这里开始，一个自然的落脚点</h2>
+    <p>很多朋友在寻找一个简单、不绕弯子的访问路径。我们希望这个页面能够成为这样一个存在：不需要额外的搜索，也不需要在各种链接里反复跳转。</p>
+    <p><strong>安博体育</strong>所代表的，正是这样一种直接的网络体验。它不只是一个名字，也是一种页面应有的气质——清爽、直达、不带干扰。</p>
+  </div>
+
+  <!-- 三段自然介绍（杂志风格） -->
+  <div class="feature-grid">
+    <div class="feature-item">
+      <h3>清晰的起点</h3>
+      <p>在信息过载的今天，一个干净、明确的首页比什么都重要。从视觉到结构，不堆砌模块，只保留最基本的入口感。就像走进一家熟悉的杂志店，你知道自己为什么而来。</p>
+    </div>
+    <div class="feature-item">
+      <h3>稳定的浏览节奏</h3>
+      <p>无论是晨间快速浏览，还是午后静下心细读，页面节奏都保持温和。暖色背景让眼睛不易疲劳，圆角卡片与柔和的阴影营造出翻阅纸质读物的手感。</p>
+    </div>
+    <div class="feature-item">
+      <h3>直连的路径</h3>
+      <p>少一层跳转，就多一分从容。我们特意保留了最直接的连接方式——下文的按钮就是那条路。它不张扬，但足够可靠。</p>
+    </div>
+  </div>
+
+  <!-- 链接区：按钮感 + 自然嵌入句子 -->
+  <div class="link-area">
+    <p style="margin-bottom: 0.6rem; font-size: 1rem; color: #4d392b;">
+      如果你需要直接访问，可以点击下方的
+      <a href="https://chinese-anbosport.com" style="display:inline; background:transparent; box-shadow:none; color:#8c653e; padding:0 0.2rem; font-size:1.05rem; text-decoration:underline; text-underline-offset:3px;">安博体育</a>
+      链接，也可使用大按钮：
+    </p>
+    <a href="https://chinese-anbosport.com">安博体育</a>
+    <span class="hint">一次点击 · 直接到达</span>
+  </div>
+
+  <!-- FAQ 摘要（轻量） -->
+  <div class="faq-mini">
+    <details>
+      <summary>这个页面是官方网站吗？</summary>
+      <p>本页是介绍性入口，指向的域名为 <strong>chinese-anbosport.com</strong>。我们致力于提供清晰、真实的引导，不包含多余的中间页面。</p>
+    </details>
+    <details>
+      <summary>为什么页面设计偏杂志风格？</summary>
+      <p>杂志式排版让人感到亲近且有结构。暖色渐变与白色卡片希望传递一种“翻杂志时顺手记下地址”的轻松感，让访问本身成为一件自然的事。</p>
+    </details>
+  </div>
+
+  <!-- 页尾提示 -->
+  <div class="footer-note">
+    <span>✦ 安博体育 · 页面说明 ✦</span>
+    <p style="margin-top: 0.7rem; font-size: 0.9rem;">本页仅作介绍，内容保持中立与实际相符。稳定的入口，是网络世界最朴素的善意。</p>
+  </div>
+
+</div>
+</body>
+</html>
